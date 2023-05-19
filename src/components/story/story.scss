@@ -1,0 +1,68 @@
+@import "../../style.scss";
+
+.story {
+    width: 20%;
+    flex-shrink: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-image: linear-gradient(117deg, #5294fd, #0649b4 102%);
+
+    @include mobile {
+        flex: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    .text-content {
+        padding: 10px;
+        text-align: center;
+        color: white;
+    }
+
+    
+
+    span {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        color: white;
+        font-weight: 500;
+
+        @include mobile {
+            display: none;
+        }
+    }
+
+    button {
+        position: absolute;
+        bottom: 40px;
+        left: 10px;
+        color: white;
+        background-color: #5271ff;
+        border: none;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        font-size: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @include mobile {
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    }
+
+    
+}

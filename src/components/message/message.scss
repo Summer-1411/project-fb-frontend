@@ -1,0 +1,54 @@
+.message-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+
+    .messageTop {
+        display: flex;
+        align-items: center;
+        .messageImg {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+
+        .messageText {
+            padding: 10px;
+            border-radius: 20px;
+            background-color: #1877f2;
+            color: white;
+            max-width: 300px;
+        }
+        .deleted-message {
+            background-color: gray;
+            counter-reset: #333;
+            padding: 10px;
+            border-radius: 20px;
+        }
+        .icon-delete {
+            cursor: pointer;
+        }
+    }
+
+    .messageBottom {
+        font-size: 12px;
+        margin-top: 10px;
+    }
+
+    &.own {
+        align-items: flex-end;
+
+        .messageText {
+            background-color: rgb(49, 142, 39);
+            color: rgb(255, 255, 255);
+        }
+    }
+}
+
+
+
+
+
+

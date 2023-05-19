@@ -1,0 +1,105 @@
+@import "../../style.scss";
+
+.chat-wrapper {
+    @include themify($themes) {
+        display: flex;
+        .chatMenu {
+            flex: 2;
+            background-color: themed("bg");
+            position: sticky;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            // height: calc(100vh);
+            overflow-y: scroll;
+            &::-webkit-scrollbar {
+                width: 5px;
+                height: 10px;
+                &-thumb {
+                    background-image: linear-gradient(117deg,#af0a78,#5a035a 102%);
+                    border-radius: 2px;
+                }
+                &-track {
+                    border-radius: 2px;
+                    background-color: rgb(214, 223, 141);
+                }
+            }
+            .heading-menu-chat {
+                //margin-top: 20px;
+                margin: 10px;
+                display: flex;
+                align-items: center;
+                border: 1px solid #ccc;
+                background-color: themed("bg");
+                color: themed("textColor");
+                .search-user {
+                    flex: 1;
+                    padding: 10px;
+                    border: none;
+                    outline: none;
+                    background-color: themed("bg");
+                    color: themed("textColor");
+                }
+                .btn-search {
+                    cursor: pointer;
+                    background-color: themed("bg");
+                }
+            }
+        }
+
+        .chatBox {
+            flex: 6;
+            background-color: themed("bgSoft");
+            height: calc(100vh - 50px);
+            overflow: hidden;
+        }
+
+        .chatOnline {
+            flex: 2;
+            background-color: themed("bg");
+            .chatOnlineWrapper {
+                .userOnline-item {
+                        background-color: themed("bg");
+                        display: flex;
+                        align-items: center;
+                        padding: 10px;
+                        color: themed("textColor");
+                
+                
+                        &.active {
+                            background-color: rgb(67, 67, 225);
+                            color: white;
+                        }
+                
+                        cursor: pointer;
+                
+                        .avatar-container {
+                            position: relative;
+                
+                            .conversationImg {
+                                width: 40px;
+                                height: 40px;
+                                border-radius: 50%;
+                                object-fit: cover;
+                            }
+                
+                            .user-online{
+                                position: absolute;
+                                right: 0;
+                                bottom: 10px;
+                                width: 10px;
+                                height: 10px;
+                                background-color: rgb(28, 189, 28);
+                                border-radius: 50%;
+                            }
+                        }
+                
+                        .conversationName {
+                            margin-left: 20px;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+    }
+}

@@ -1,0 +1,50 @@
+.chatcontainer-wrapper {
+    position: relative;
+    height: calc(100vh - 60px);
+    .chatBoxTop {
+        height: calc(100% - 60px);
+        overflow-y: scroll;
+        padding-right: 10px;
+        &::-webkit-scrollbar {
+            width: 5px;
+            height: 10px;
+            &-thumb {
+                background-image: linear-gradient(117deg,#af0a78,#5a035a 102%);
+                border-radius: 2px;
+            }
+            &-track {
+                border-radius: 2px;
+                background-color: rgb(214, 223, 141);
+            }
+        }
+    }
+    .chatBoxBottom {
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        .chatMessageInput {
+            width: 80%;
+            height: 40px;
+            padding: 10px;
+        }
+        
+        .chatSubmitButton {
+            width: 70px;
+            height: 40px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: teal;
+            color: white;
+        }
+        
+    }
+}
+
+
+

@@ -1,0 +1,21 @@
+@import "../../style.scss";
+
+.welcome-wrapper {
+    @include themify($themes) {
+        display: flex;
+        user-select: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        .img-robot-chat {
+            height: 20rem;
+            width: 20rem;
+        }
+        .heading-welcome-chat,
+        .text-welcome-chat {
+            color: #4e00ff;
+        }
+    }
+}
+
