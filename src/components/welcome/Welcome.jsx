@@ -8,9 +8,9 @@ function Welcome( ) {
     <div className='welcome-wrapper'>
         <img src={robot} alt="" className='img-robot-chat'/>
         <h1 className='heading-welcome-chat'>
-            Welcome, <span>{currentUser.name}</span>
+            Chào mừng, <span>{currentUser.name}</span>
         </h1>
-        <h3 className='text-welcome-chat'>Please select a chat to Messaging</h3>
+        <h3 className='text-welcome-chat'>Hãy bắt đầu trò chuyện</h3>
     </div> );
 }
 

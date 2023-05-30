@@ -36,10 +36,11 @@
                 border-radius: 50%;
             }
         }
-
-        .conversationName {
+        .user-infor {
             margin-left: 20px;
-            font-weight: 500;
+            .conversationName {
+                font-weight: 500;
+            }
         }
     }
 }

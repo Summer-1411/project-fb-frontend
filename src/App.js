@@ -22,26 +22,14 @@ import { useContext, useEffect } from "react";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
-import { makeRequest } from "./axios";
-import { ChatContext } from "./context/chatContext";
+
 import CreateStory from "./components/createStory/CreateStory";
 
 function App() {
   
   
   const currentUser = useSelector((state) => state.user.currentUser);
-  const {setConversation,setCurrentChat } = useContext(ChatContext)
-  
-  useEffect(() => {
-    const getAllConversation = async () => {
-        const res = await makeRequest.get("/chats")
-        //console.log(res.data);
-        setConversation(res.data)
-    }
-    currentUser && setCurrentChat(undefined)
-    getAllConversation()
-// eslint-disable-next-line react-hooks/exhaustive-deps
-}, [currentUser])
+
   const {darkMode} = useContext(DarkModeContext)
   const queryClient = new QueryClient()
   const Layout = () => {

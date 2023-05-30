@@ -6,6 +6,7 @@ import "./register.scss";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { toastOption } from "../../constants";
+import RegisterImg from "../../assets/register.jpg";
 const Register = () => {
     const navigate = useNavigate();
     const [inputs, setInputs] = useState({
@@ -34,7 +35,7 @@ const Register = () => {
     return (
         <div className="register">
             <div className="card">
-                <div className="left">
+                <div className="left" style={{backgroundImage: `url(${RegisterImg})`}}>
                     <h1>Summer Social.</h1>
                     <p>
                         

@@ -7,6 +7,7 @@ import { loginFailure, loginStart, loginSuccess } from "../../redux/userRedux";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { toastOption } from "../../constants";
+import LoginImg from "../../assets/login.jpg";
 function Login() {
     const dispatch = useDispatch()
     const [inputs, setInputs] = useState({
@@ -39,8 +40,8 @@ function Login() {
     return ( 
         <div className="login">
             <div className="card">
-                <div className="left">
-                    <h1>Hello world.</h1>
+                <div className="left" style={{backgroundImage: `url(${LoginImg})`}}>
+                    <h1>Summer Social.</h1>
                     <p>
                     Đăng nhập để trải nghiệm toàn bộ tính năng của website.
                     </p>

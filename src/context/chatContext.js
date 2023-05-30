@@ -8,6 +8,7 @@ const ChatContextProvider = ({ children }) => {
     const currentUser = useSelector((state) => state.user.currentUser);
     const [currentChat, setCurrentChat] = useState()
     const [conversation, setConversation] = useState([])
+    const [dataSocket, setDataSocket] = useState([])
     const socket = useRef();
     //console.log({currentUser});
 
@@ -19,7 +20,7 @@ const ChatContextProvider = ({ children }) => {
         }
     },[currentUser])
     return (
-        <ChatContext.Provider value={{currentChat, setCurrentChat, conversation, setConversation, socket}}>
+        <ChatContext.Provider value={{currentChat, setCurrentChat, conversation, setConversation, dataSocket, setDataSocket, socket}}>
             {children}
         </ChatContext.Provider>
     )

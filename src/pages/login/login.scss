@@ -14,8 +14,8 @@
 
         .left {
             flex: 1;
-            background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
-                url("https://www.coderus.com/wp-content/uploads/2021/03/social-network-tech-trends.jpg") center;
+            background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)) ;
+            background-position: right bottom;
             background-size: cover;
             padding: 50px;
             display: flex;
@@ -24,6 +24,7 @@
             color: white;
             //display: none;
             h1 {
+                color: #ffffff;
                 font-size: 100px;
                 line-height: 100px;
             }

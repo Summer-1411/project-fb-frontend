@@ -5,7 +5,6 @@
 
     .messageTop {
         display: flex;
-        align-items: center;
         .messageImg {
             width: 32px;
             height: 32px;
@@ -13,14 +12,21 @@
             object-fit: cover;
             margin-right: 10px;
         }
-
-        .messageText {
-            padding: 10px;
-            border-radius: 20px;
-            background-color: #1877f2;
-            color: white;
-            max-width: 300px;
+        .content-message {
+            .messageText {
+                padding: 10px;
+                border-radius: 20px;
+                background-color: #1877f2;
+                color: white;
+                max-width: 300px;
+            }
+            .img-sms {
+                width: 200px;
+                height: 200px;
+                object-fit: cover;
+            }
         }
+        
         .deleted-message {
             background-color: gray;
             counter-reset: #333;

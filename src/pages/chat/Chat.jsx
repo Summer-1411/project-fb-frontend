@@ -9,15 +9,28 @@ import { ChatContext } from "../../context/chatContext";
 import { makeRequest } from "../../axios";
 import { useSelector } from "react-redux";
 export default function Chat() {
+    
     const currentUser = useSelector((state) => state.user.currentUser);
-    const [online, setOnline] = useState([])
     const [friends, setFriends] = useState([])
     const [friendOnline, setFriendOnline] = useState([])
-    const { currentChat, setCurrentChat, conversation, socket } = useContext(ChatContext)
+    
+    const { currentChat, setCurrentChat, conversation, setConversation, dataSocket, setDataSocket, socket } = useContext(ChatContext)
     const handleClickConversation = (conversation) => {
+        socket.current?.emit('join room', conversation.idChat);
         setCurrentChat(conversation.idChat)
     }
-    console.log({ conversation });
+
+    useEffect(() => {
+        const getAllConversation = async () => {
+            const res = await makeRequest.get("/chats")
+            //console.log(res.data);
+            setConversation(res.data)
+        }
+        currentUser && setCurrentChat(undefined)
+        getAllConversation()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentUser])
+    //console.log({ conversation });
     useEffect(() => {
         const getFriends = async () => {
             try {
@@ -35,15 +48,17 @@ export default function Chat() {
         socket.current?.on("getUsers", (data) => {
             //setMessages(prev => [...prev, data])
             console.log("online", data);
-            setOnline(data)
+            setDataSocket(data)
         });
-
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    
     useEffect(() => {
-        setFriendOnline(friends.filter(user => online.some(onlineUser => onlineUser.userId === user.id)))
-    }, [friends, online])
+        setFriendOnline(friends.filter(user => dataSocket.some(onlineUser => onlineUser.userId === user.id)))
+    }, [dataSocket, friends])
+
+    // useEffect(() => {
+
+    // }, [online])
     //const matchedUsers = friends.filter(user => online.some(onlineUser => onlineUser.userId === user.id));
     //console.log({matchedUsers});
     return (
@@ -74,7 +89,7 @@ export default function Chat() {
             </div>
             <div className="chatOnline">
                 <div className="chatOnlineWrapper">
-                    <h3>User Online</h3>
+                    <h3>Đang hoạt động</h3>
                     {friendOnline?.map((online) => (
                         <div key={online.id} className="userOnline-item">
                             <div className="avatar-container">
