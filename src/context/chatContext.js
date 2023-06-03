@@ -13,7 +13,6 @@ const ChatContextProvider = ({ children }) => {
     //console.log({currentUser});
 
     useEffect(()=>{
-
         if(currentUser){
             socket.current = io("ws://localhost:8900")
             socket.current.emit("addUser", currentUser.id);

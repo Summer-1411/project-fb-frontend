@@ -1,13 +1,14 @@
-import {  useState } from "react";
+import {  useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "./login.scss"
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginFailure, loginStart, loginSuccess } from "../../redux/userRedux";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { toastOption } from "../../constants";
 import LoginImg from "../../assets/login.jpg";
+import { ChatContext } from "../../context/chatContext";
 function Login() {
     const dispatch = useDispatch()
     const [inputs, setInputs] = useState({
@@ -31,9 +32,8 @@ function Login() {
             })
             toast.success("Đăng nhập thành công", toastOption);
             dispatch(loginSuccess(res.data))
-            //console.log("res data", res.data);
         } catch (error) {
-            toast.error(error.response.data, toastOption);
+            toast.error(error.response, toastOption);
             dispatch(loginFailure())
         }
     }

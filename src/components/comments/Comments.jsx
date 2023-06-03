@@ -7,7 +7,7 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const Comments = ({ postId }) => {
+const Comments = ({ postId, setComments }) => {
     const [desc, setDesc] = useState("");
     const [cmt, setCmt] = useState([]);
 
@@ -34,12 +34,14 @@ const Comments = ({ postId }) => {
     const handleClick = async (e) => {
         e.preventDefault();
         await makeRequest.post("/comments", { desc, postId })
+        setComments(prev => prev + 1)
         getComments()
         setDesc("");
         console.log("Send cmt");
     };
     const handleDeleteCmt = async (id) => {
         await makeRequest.delete(`/comments/${id}`)
+        setComments(prev => prev - 1)
         setCmt(prev => prev.filter((cmt) => cmt.id !== id))
     }
 

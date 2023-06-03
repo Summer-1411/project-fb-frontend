@@ -23,19 +23,7 @@ const Share = () => {
             console.log(err);
         }
     };
-    // const queryClient = useQueryClient();
 
-    // const mutation = useMutation(
-    //     (newPost) => {
-    //         return makeRequest.post("/posts", newPost);
-    //     },
-    //     {
-    //         onSuccess: () => {
-    //             // Invalidate and refetch
-    //             queryClient.invalidateQueries(["posts"]);
-    //         },
-    //     }
-    // );
     const handleClick = async (e) => {
         e.preventDefault()
         let imgUrl = "";
@@ -57,7 +45,6 @@ const Share = () => {
         setFile(null);
     }
     
-    //const currentUser = useSelector((state) => state.user.currentUser);
     return (
         <div className="share">
             <div className="container">

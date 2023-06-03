@@ -8,6 +8,7 @@ import { useContext, useEffect, useState } from "react";
 import { ChatContext } from "../../context/chatContext";
 import { makeRequest } from "../../axios";
 import { useSelector } from "react-redux";
+import ListUserOnline from "../../components/listUserOnline/ListUserOnline";
 export default function Chat() {
     
     const currentUser = useSelector((state) => state.user.currentUser);
@@ -19,7 +20,10 @@ export default function Chat() {
         socket.current?.emit('join room', conversation.idChat);
         setCurrentChat(conversation.idChat)
     }
-
+    useEffect(() => {
+        currentChat && socket.current?.emit('join room', currentChat);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentChat])
     useEffect(() => {
         const getAllConversation = async () => {
             const res = await makeRequest.get("/chats")
@@ -43,15 +47,14 @@ export default function Chat() {
         }
         getFriends();
     }, [currentUser.id])
+
     useEffect(() => {
-        // socket.current = (io("ws://localhost:8900"))
         socket.current?.on("getUsers", (data) => {
-            //setMessages(prev => [...prev, data])
-            console.log("online", data);
             setDataSocket(data)
+            console.log("Dang nhap xong get online");
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [currentUser])
     useEffect(() => {
         setFriendOnline(friends.filter(user => dataSocket.some(onlineUser => onlineUser.userId === user.id)))
     }, [dataSocket, friends])
@@ -87,24 +90,7 @@ export default function Chat() {
                 )}
 
             </div>
-            <div className="chatOnline">
-                <div className="chatOnlineWrapper">
-                    <h3>Đang hoạt động</h3>
-                    {friendOnline?.map((online) => (
-                        <div key={online.id} className="userOnline-item">
-                            <div className="avatar-container">
-                                <img
-                                    className="conversationImg"
-                                    src={"../upload/" + online.profilePic}
-                                    alt="avt"
-                                />
-                                <div className="user-online"></div>
-                            </div>
-                            <span className="conversationName">{online.name}</span>
-                        </div>
-                    ))}
-                </div>
-            </div>
+            <ListUserOnline friendOnline={friendOnline} />
         </div>
     );
 }

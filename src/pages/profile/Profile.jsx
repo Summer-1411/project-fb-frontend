@@ -26,13 +26,6 @@ const Profile = () => {
     
     const userId = Number(useParams().id)
 
-    // const { isLoading: rIsLoading, data: relationshipData } = useQuery(
-    //     ["relationship"],
-    //     () =>
-    //         makeRequest.get("/relationships?followedUserId=" + userId).then((res) => {
-    //             return res.data;
-    //         })
-    // );
     useEffect(() =>  {
         const getFollower = async () => {
             const res = await makeRequest.get("/relationships?followedUserId=" + userId) 
@@ -42,8 +35,6 @@ const Profile = () => {
         getFollower();
     }, [userId])
     
-    //console.log({relationshipData, currentUser});
-
     useEffect(() => {
         const getUserById = async () => {
             try {
@@ -59,21 +50,6 @@ const Profile = () => {
         getUserById();
     }, [userId, currentUser])
 
-    // const queryClient = useQueryClient();
-
-    // const mutation = useMutation(
-    //     (following) => {
-    //         if (following)
-    //             return makeRequest.delete("/relationships?userId=" + userId);
-    //         return makeRequest.post("/relationships", { userId });
-    //     },
-    //     {
-    //         onSuccess: () => {
-    //             // Invalidate and refetch
-    //             queryClient.invalidateQueries(["relationship"]);
-    //         },
-    //     }
-    // );
 
     const handleFollow = async () => {
         if(arrFollows.includes(currentUser.id)){

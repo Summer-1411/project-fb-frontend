@@ -114,7 +114,7 @@ const Post = ({ post, handleDeletePost }) => {
                             Chia sẻ
                         </div>
                     </div>
-                    {commentOpen && <Comments postId={post.id} />}
+                    {commentOpen && <Comments postId={post.id} setComments={setComments}/>}
                 </div>
             }
 

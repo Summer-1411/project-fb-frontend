@@ -64,8 +64,9 @@ export default function ChatContainer({ currentChat, socket }) {
                     text: message,
                     img: imgUrl
                 })
+                let lastMes = imgUrl ? "Đã gửi một ảnh" : message
                 await makeRequest.put(`chats/updateLastMessage/${currentChat}`, {
-                    mes: message
+                    mes: lastMes
                 })
 
                 let date = new Date().toISOString();
@@ -92,8 +93,10 @@ export default function ChatContainer({ currentChat, socket }) {
                     text: message,
                     img: imgUrl
                 })
+                let lastMes = imgUrl ? "Đã gửi một ảnh" : message
+
                 await makeRequest.put(`chats/updateLastMessage/${currentChat}`, {
-                    mes: message
+                    mes: lastMes
                 })
 
                 let date = new Date().toISOString();
@@ -119,12 +122,8 @@ export default function ChatContainer({ currentChat, socket }) {
         }
     }
     useEffect(() => {
-        // socket.current = (io("ws://localhost:8900"))
         socket.current.on("getMessage", (data) => {
-            //console.log(data);
-            //setMessages(prev => [...prev, data])
             setNewMes(data)
-            //setMessages(prev => [...prev, data])
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -152,9 +151,7 @@ export default function ChatContainer({ currentChat, socket }) {
                     <div key={mes.id} ref={scrollRef}>
                         <Message message={mes} own={mes.userSend_id === currentUser.id} setMessages={setMessages} />
                     </div>
-
                 ))}
-
             </div>
             <div className="chatBoxBottom">
                 <div className="right">
