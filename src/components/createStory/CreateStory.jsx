@@ -108,7 +108,7 @@ export default function CreateStory() {
                     </div>
                 </div>
                 {option && <div className="overview">
-                    <div className="title-overview">Xem truoc</div>
+                    <div className="title-overview">Xem trước</div>
                     <div className="back-ground">
                         <div className="content-overview">
                             {option === "text" && <div className="text-content">

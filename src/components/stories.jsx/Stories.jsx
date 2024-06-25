@@ -34,6 +34,7 @@ const Stories = () => {
                     <Link to={"/stories/create"}>
                         <button>+</button>
                     </Link>
+                    
                 </div>
                 {stories.map(story => (
                     <Story key={story.id} story={story} handleDelete={handleDelete}/>

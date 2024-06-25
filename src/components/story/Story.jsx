@@ -18,6 +18,7 @@ export default function Story({ story, handleDelete }) {
             {menuOpen && story.userId === currentUser.id && (
                 <div onClick={deleteClick} className="btn-deleteStory">delete</div>
             )}
+           
         </div>
     )
 }

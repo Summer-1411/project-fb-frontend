@@ -32,6 +32,7 @@ const Post = ({ post, handleDeletePost }) => {
             console.log(error);
         }
     }
+    //console.log("Like: ", likes)
     const getComments = async () => {
         try {
             const res = await makeRequest.get(`/comments?postId=${post.id}`)
@@ -53,6 +54,7 @@ const Post = ({ post, handleDeletePost }) => {
         handleDeletePost(post.id)
         //deleteMutation.mutate(post.id);
     };
+    //like
     const handleLike = async () => {
         let liked = likes.includes(currentUser.id)
         if (liked) {

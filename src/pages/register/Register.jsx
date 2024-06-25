@@ -22,6 +22,10 @@ const Register = () => {
 
     const handleClick = async (e) => {
         e.preventDefault()
+        if(!inputs.name || !inputs.email || !inputs.password){
+            toast.error("Bạn chưa nhập đủ thông tin" , toastOption);
+            return;
+        }
         try {
             await axios.post("http://localhost:8800/api/auth/register", inputs)
             toast.success("Đăng ký thành công", toastOption);

@@ -33,7 +33,8 @@ function Login() {
             toast.success("Đăng nhập thành công", toastOption);
             dispatch(loginSuccess(res.data))
         } catch (error) {
-            toast.error(error.response, toastOption);
+            console.log('error', error);
+            toast.error(error.response.data, toastOption);
             dispatch(loginFailure())
         }
     }

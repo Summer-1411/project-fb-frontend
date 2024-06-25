@@ -59,6 +59,7 @@ export default function Chat() {
         setFriendOnline(friends.filter(user => dataSocket.some(onlineUser => onlineUser.userId === user.id)))
     }, [dataSocket, friends])
 
+    console.log('conversation',conversation);
     // useEffect(() => {
 
     // }, [online])
